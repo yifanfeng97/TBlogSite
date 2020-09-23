@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    
+<meta name="google-site-verification" content="NKmJcEhydyNhB1Q7X2UmYQtR--tBsHnJJE-kV07NREw" />
+<meta name="baidu-site-verification" content="6rHVJML304" />
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="这里写了如何配合使用Github和Hexo，达到两人同步写博客哦！"/>
+
+
+
+
+  <meta name="keywords" content="折腾,非念," />
+
+
+
+
+  <link rel="alternate" href="/default" title="饥饿站台">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://zdfyf.fun/2020/08/02/教条条如何一起使用Git和Hexo/"/>
+
+
+<meta name="description" content="这里写了如何配合使用Github和Hexo，达到两人同步写博客哦！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教条条如何一起使用Git和Hexo">
+<meta property="og:url" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/index.html">
+<meta property="og:site_name" content="饥饿站台">
+<meta property="og:description" content="这里写了如何配合使用Github和Hexo，达到两人同步写博客哦！">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_download.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/ssh_key.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_setting.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_ssh.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_new_key.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_add_key.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_success.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/js_site.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/admin_cmd.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/title_head.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/insert_image.png">
+<meta property="og:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/preview.png">
+<meta property="article:published_time" content="2020-08-02T07:56:54.000Z">
+<meta property="article:modified_time" content="2020-09-21T01:41:51.110Z">
+<meta property="article:author" content="Evan&amp;Michelle">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="非念">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zdfyf.fun/2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/git_download.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2f3cd246eee7bc1aef2bd1355c0b923a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <title> 教条条如何一起使用Git和Hexo - 饥饿站台 </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">饥饿站台</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    
+                        <li class="menu-item">
+                    
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <div class="post-container">
+<article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          教条条如何一起使用Git和Hexo
+        
+      </h1>
+
+      <time class="post-time">
+         <i class="iconfont">&#xe638;</i> Aug 02 2020
+         <i class="iconfont">&#xe675;</i> Sep 21 2020
+      </time>
+    </header>
+
+
+    
+
+        <div class="post-content yifan-body">
+            <h1>迁移环境</h1>
+<h2 id="基础组件的安装和配置">基础组件的安装和配置</h2>
+<h3 id="安装Git">安装Git</h3>
+<p>安装<code>Git</code>的目的是为了保证代码能随时与<code>Github</code>同步，是多人协同必须安装的软件。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">点击这里</a>下载<code>Git</code>安装包。如下图：</p>
+<p><img src="git_download.png" alt=""></p>
+<p>下载之后双击打开，然后每次都对默认选项不做任何修改，点击下一步即可，直到安装完成。</p>
+<p>恭喜<code>Git</code>安装成功！🎈🎈🎈</p>
+<h3 id="配置Git">配置Git</h3>
+<p>按下<code>win</code>键，输入<code>cmd</code>，然后打开<code>cmd</code>。</p>
+<p>这里，我们选择使用<code>ssh</code>密钥的配置方式，这种方式的好处是，不需要每次<code>push</code>的时候都要去输入用户名和密码哦。</p>
+<p>首先我们先配置<code>Github</code>的用户名和邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"这里填你的用户名一定要修改成自己的"</span></span><br><span class="line"></span><br><span class="line">git config --global user.email <span class="string">"这里填写你注册的github的邮箱"</span></span><br></pre></td></tr></table></figure>
+<p>样例如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"tiaotiao"</span></span><br><span class="line"></span><br><span class="line">git config --global user.email <span class="string">"tiaotiao@tt.com"</span></span><br></pre></td></tr></table></figure>
+<p>配置好用户名和邮箱之后，我们通过配置<code>ssh</code>密实来帮助<code>github</code>辨别这个电脑用户的身份。</p>
+<p>接下来我们先通过命令生成<code>ssh</code>的密匙。顺序执行以下三条命令，第一条命令会在用户根目录的<code>.ssh</code>目录下生成密匙，执行第一条命令时全部默认选项回车即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"><span class="built_in">type</span> id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>执行完第三条命令之后，你的密钥会被打印到命令行，显示如下：</p>
+<p><img src="ssh_key.png" alt="ssh key"></p>
+<p>接下来把红框中的字母串复制到剪切板上备用。注意这个完整的字符串以**“ssh-rsa&quot;<strong>开头，以</strong>&quot;你的邮箱”**结尾。</p>
+<p>接下来我们打开<a href="www.github.com">Github</a>，使用你的用户名和密码登录，打开设置，如下：</p>
+<p><img src="git_setting.png" alt="git setting"></p>
+<p>从最左侧找到<strong>SSH and GPG keys</strong>并点击点击，如下：</p>
+<p><img src="git_ssh.png" alt="git ssh"></p>
+<p>点击右上角的<strong>New SSH key</strong>，如下：</p>
+<p><img src="git_new_key.png" alt="git new key"></p>
+<p>在如下的框中输入自拟的<strong>Title</strong>，<strong>Key</strong>要填入前面存在粘贴板上的字符串，如下：</p>
+<p><img src="git_add_key.png" alt="git add key"></p>
+<p>点击<strong>Add SSH key</strong>，在弹出的界面输入<code>github</code>的密码之后，即添加成功，成功后的界面如下：</p>
+<p><img src="git_success.png" alt="git success"></p>
+<p>恭喜！<code>Github</code>配置成功！🎈🎈🎈</p>
+<p>接下来，我们要从github上把项目clone到本地上来，假设我们的得到的git网址为：</p>
+<p><em><a href="mailto:git@github.com">git@github.com</a>:xxx/xxx.git</em></p>
+<p>于是接下来我们选择一个合适的目录来存放这个项目的源码，假设你已经把命令行change到合适的目录，我们执行如下命令来clone源码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
+<p>通过执行<code>dir</code>命令，你会很惊奇的发现，在这个目录下多了一个文件夹叫<code>xxx</code>。</p>
+<p>为了进入这个文件夹，执行<code>cd xxx</code>。</p>
+<p>接下来我们要安装<code>Node.js</code>。</p>
+<h3 id="安装Node-js">安装Node.js</h3>
+<p>安装<code>Node.js</code>的目的是为了，给网站提供解释前端的web框架。</p>
+<p>首先我们打开<code>Node.js</code>的<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>，下载左边的<code>12.18.3</code>的版本。</p>
+<p><img src="js_site.png" alt="node.js web site"></p>
+<p>然后双击下载好的安装包，进行安装。每个界面都使用默认的选项，不做任何更改，直接点击下一步，弹出请求权限的时候点同意，直到安装完成。</p>
+<p>恭喜<code>Node.js</code>安装成功！🎈🎈🎈</p>
+<h3 id="配置Node-js">配置Node.js</h3>
+<p>配置<code>Node.js</code>的目的是为了加速package的安装，由于它默认的服务器在国外访问起来速度很慢，这里我们选择<code>taobao</code>的镜像进行替换，并安装<code>cnpm</code>来替换原本的<code>npm</code>，可以简单的将<code>cnpm</code>理解为<code>china's npm</code>。执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>注意下面要通过管理员身份打开一个新的<code>cmd</code>，才可以执行下面一条的命令，我们与先前打开<code>cmd</code>一样，我们首先按下<code>win</code>键，然后输入<code>cmd</code>，然后点击以管理员身份运行，如下：</p>
+<p><img src="admin_cmd.png" alt="admin"></p>
+<p>由于<code>Node.js</code>需要<code>Python2</code>等依赖，因此我们通过下面的命令一次性将windows上所有需要的依赖补全，如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --global --production windows-build-tools</span><br></pre></td></tr></table></figure>
+<p>执行完之后，关闭刚刚用管理员权限打开的<code>cmd</code>。回到之前打开的第一个<code>cmd</code>。</p>
+<p>恭喜<code>Node.js</code>配置成功！🎈🎈🎈</p>
+<h3 id="安装Hexo">安装Hexo</h3>
+<p>这里<code>Hexo</code>就是我们今天的主角了，整个博客都是基于<code>Hexo</code>框架。</p>
+<p>在前面已经装好<code>Git</code>和<code>Node.js</code>之后，下一步我们只需要执行一条命令就能安装好<code>Hexo</code>啦。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>恭喜<code>Hexo</code>安装成功！🎈🎈🎈</p>
+<h3 id="配置Hexo">配置Hexo</h3>
+<p>下面要针对刚刚<code>clone</code>下来的包，配置好<code>Hexo</code>的环境。</p>
+<p>首先打开clone下来的<code>xxx</code>代码的根目录。</p>
+<p><strong>注意一定要把命令行的当前路径change到博客代码的根目录！！！</strong></p>
+<p>分别执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnpm install</span><br><span class="line"></span><br><span class="line">cnpm install hexo-deployer-git --save</span><br><span class="line">cnpm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br></pre></td></tr></table></figure>
+<p>等待执行结束。</p>
+<p>恭喜<code>Hexo</code>配置成功！🎈🎈🎈</p>
+<h1>如何写新的文章？</h1>
+<h2 id="从Github同步代码（pull）">从Github同步代码（pull）</h2>
+<p>先同步最新的代码到本地，在代码根目录执行如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h2 id="新建文章">新建文章</h2>
+<p>新建文章很简单，就一条命令，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新博客的名字&quot;</span><br></pre></td></tr></table></figure>
+<p>例如，新建一篇名叫&quot;我的傻条条&quot;的文章：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"我的傻条条"</span></span><br></pre></td></tr></table></figure>
+<p>然后你就可以发现在<code>source\_posts\</code>下面出现了新的文章和文件夹：</p>
+<ul>
+<li>文章<code>我的傻条条.md</code></li>
+<li>文件夹<code>我的傻条条</code></li>
+</ul>
+<p>其中<code>我的傻条条.md</code>是文章的<code>markdown</code>源码，可以直接使用<code>Typora</code>打开编辑。<code>我的傻条条</code>文件夹是用来存放此文章所需要的所有图片。</p>
+<h2 id="写文章注意事项">写文章注意事项</h2>
+<p>文章以<code>markdown</code>的形式存放在<code>我的傻条条.md</code>中，基本语法参考<a href="https://www.jianshu.com/p/191d1e21f7ed/" target="_blank" rel="noopener"><code>markdown</code>的语法</a>。</p>
+<p>但是这里有两点需要注意的：<strong>文章头部信息的编辑</strong>和<strong>如何插入图片</strong>。</p>
+<h3 id="文章头部的编辑">文章头部的编辑</h3>
+<p>首先我们看下自动生成的文件头部的样子，如下图：</p>
+<p><img src="title_head.png" alt="title head"></p>
+<p>下面的这些项目都需要自己修改 。</p>
+<ul>
+<li>title：即为到时候显示在文章上面的标题。</li>
+<li>author：师傅/条条。</li>
+<li>description：显示在首页的描述，自己修改哦。</li>
+<li>tags：自己设置哦：折腾、非念、树洞、有的没的、等等。</li>
+<li>date：不用修改，会自动设置，显示在首页，可以手动修改纠正。</li>
+</ul>
+<h3 id="如何插入图片">如何插入图片</h3>
+<p>将图片保存在与文件同名的文件夹中，前面自动创建的有。然后在文章中通过下面的方式引用：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">image</span>](<span class="link">image_name.png</span>)</span><br></pre></td></tr></table></figure>
+<p>方括号内为文件描述，括号中为文件路径，注意这里直接放图片名字就好，不要加文件夹名字！！！可能会导致<code>typora</code>中无法预览，但是编译到网站上是没有问题哒。</p>
+<p>举个例子，若文件夹中的图片有下面这些：</p>
+<p><img src="insert_image.png" alt="insert image"></p>
+<p>我们想在文章中引用叫<code>insert_image.png</code>这一个图片，那么我们需要在文章中的对应位置，插入如下代码：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">some description here</span>](<span class="link">insert_image.png</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="重新编译生成博客">重新编译生成博客</h2>
+<p>分别执行如下两条命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<h2 id="本地预览">本地预览</h2>
+<p>执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>然后终端中会打印出一个网址，如下：</p>
+<p><img src="preview.png" alt="preview"></p>
+<p>然后在浏览器输入这个网址，就能在浏览器预览博客啦。</p>
+<h2 id="上传到服务器">上传到服务器</h2>
+<p>执行一条命令，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>中途可能需要输入用户名和密码，输入好自动部署到远程服务器上啦，稍等几分钟<code>zdfyf.fun</code>里面的内容就更新啦，就能看到新的的博客啦。</p>
+<h2 id="同步到Github（push）">同步到Github（push）</h2>
+<p>分别执行三条命令，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"这里写一些这次提交的附加信息，比如更改了错别字，或者更新了文章之类的"</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h2 id="完结撒花">完结撒花</h2>
+<p>恭喜你！！！</p>
+<p>🌹🌹🌹🌹🌹🌹🌹🌹</p>
+
+        </div>
+        
+        <p class="actual-author"> —— By 师傅 </p>
+        
+
+    
+
+  </article>
+
+
+  
+      <aside>
+          <div class="toc-container">
+              <div class="toc-title">Contents</div>
+              <div class="toc-content">
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">迁移环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础组件的安装和配置"><span class="toc-text">基础组件的安装和配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Git"><span class="toc-text">配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Node-js"><span class="toc-text">安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Node-js"><span class="toc-text">配置Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Hexo"><span class="toc-text">配置Hexo</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">如何写新的文章？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#从Github同步代码（pull）"><span class="toc-text">从Github同步代码（pull）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建文章"><span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写文章注意事项"><span class="toc-text">写文章注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章头部的编辑"><span class="toc-text">文章头部的编辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何插入图片"><span class="toc-text">如何插入图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重新编译生成博客"><span class="toc-text">重新编译生成博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地预览"><span class="toc-text">本地预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传到服务器"><span class="toc-text">上传到服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步到Github（push）"><span class="toc-text">同步到Github（push）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完结撒花"><span class="toc-text">完结撒花</span></a></li></ol></li></ol>
+              </div>
+          </div>
+      </aside>
+  
+</div>
+
+
+    <footer class="post-footer">
+        <div class="post-copyright">
+        <p><span>本文标题：</span>教条条如何一起使用Git和Hexo</p>
+        <p><span>文章作者：</span>Evan&Michelle</p>
+        <p><span>发布时间：</span>2020/08/02 03:56:54</p>
+        <p><span>更新时间：</span>2020/09/21 09:41:51</p>
+        <p><span>原始链接：</span><a href="http://zdfyf.fun//2020/08/02/%E6%95%99%E6%9D%A1%E6%9D%A1%E5%A6%82%E4%BD%95%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8Git%E5%92%8CHexo/" title="教条条如何一起使用Git和Hexo">http://zdfyf.fun/2020/08/02/教条条如何一起使用Git和Hexo/</a></p>
+        <p><span>许可协议：</span><i class="fab fa-creative-commons"></i><a rel="license" style="color: #bababa" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a><span class="warn">转载请保留原文链接及作者</span></p>
+        </div>
+
+          
+            <div class="post-tags">
+              
+                <a href="/tags/%E6%8A%98%E8%85%BE/">折腾</a>
+              
+                <a href="/tags/%E9%9D%9E%E5%BF%B5/">非念</a>
+              
+            </div>
+          
+
+          
+          
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/08/06/%E6%88%91%E7%9A%84%E5%82%BB%E6%9D%A1%E6%9D%A1/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">聪明的条条</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/07/28/%E6%9D%AD%E5%B7%9E%E6%9D%80%E5%A6%BB%E7%A2%8E%E5%B0%B8%E6%A1%88%E4%BB%B6%E4%B9%8B%E5%90%8E/">
+        <span class="next-text nav-default">杭州“杀妻碎尸”案件之后</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+
+    </div>
+
+      </div>
+      
+        
+
+
+
+
+
+
+
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库:-->
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    
+    
+
+    
+    
+    
+    
+
+    <div id="valine-container"></div>
+
+    <script>
+        var valine = new Valine({
+            el: '#valine-container',
+            app_id: 'YOIaGDYRCt2Ob2FQhw0Wnhqj-gzGzoHsz',
+            app_key: 'rrvU6LGkSaoDycSoJV5wKioM',
+            placeholder: '想撩博主请留言',
+            avatar: 'retro',
+            visitor: 'true',
+            pageSize: '10',
+        })
+
+    </script>
+
+
+      
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2020
+    <span class="footer-author">Evan&Michelle.</span>
+
+
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+<!--prettify代码高亮脚本引入-->
+
+
+  </body>
+</html>
